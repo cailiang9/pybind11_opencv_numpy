@@ -1,4 +1,3 @@
-%%file cpy.cpp
 /*
 <%
 setup_pybind11(cfg)
