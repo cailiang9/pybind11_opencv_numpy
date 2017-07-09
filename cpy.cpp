@@ -15,10 +15,15 @@ cfg['libraries'] = 'opencv_core opencv_imgproc opencv_imgcodecs opencv_video ope
 #include <opencv2/opencv.hpp>
 #include <vector>
 #include <string>
+#include <tuple>
 #include "ndarray_converter.h"
 
 namespace py = pybind11;
 using namespace std;
+auto testtup(int x) {
+    return std::make_tuple(cv::Mat1f(x,x,.0f),cv::Mat3b(x,x,128));
+}
+
 auto testmat(int x) {
     return cv::Mat1f(x,x,.0f);
 }
@@ -35,5 +40,6 @@ PYBIND11_PLUGIN(cpy) {
     pybind11::module m("cpy", "auto-compiled c++ extension");
     m.def("testmat", &testmat);
     m.def("testvstr", &testvstr);
+    m.def("testtup", &testtup);
     return m.ptr();
 }
