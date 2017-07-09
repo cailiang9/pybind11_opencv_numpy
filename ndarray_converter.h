@@ -24,7 +24,6 @@ namespace pybind11 { namespace detail {
     
 template <> struct type_caster<cv::Mat> {
 public:
-    
     PYBIND11_TYPE_CASTER(cv::Mat, _("numpy.ndarray"));
     
     bool load(handle src, bool) {
@@ -35,8 +34,43 @@ public:
         return handle(NDArrayConverter::toNDArray(m));
     }
 };
+
+template <> struct type_caster<cv::Mat3b> {
+public:
+    PYBIND11_TYPE_CASTER(cv::Mat3b, _("numpy.ndarray"));
+
+    static handle cast(const cv::Mat3b &m, return_value_policy, handle defval) {
+        return handle(NDArrayConverter::toNDArray(m));
+    }
+};
+
+template <> struct type_caster<cv::Mat1b> {
+public:
+    PYBIND11_TYPE_CASTER(cv::Mat1b, _("numpy.ndarray"));
+
+    static handle cast(const cv::Mat1b &m, return_value_policy, handle defval) {
+        return handle(NDArrayConverter::toNDArray(m));
+    }
+};
+
+template <> struct type_caster<cv::Mat3f> {
+public:
+    PYBIND11_TYPE_CASTER(cv::Mat3f, _("numpy.ndarray"));
     
+    static handle cast(const cv::Mat3f &m, return_value_policy, handle defval) {
+        return handle(NDArrayConverter::toNDArray(m));
+    }
+};
+
+template <> struct type_caster<cv::Mat1f> {
+public:
+    PYBIND11_TYPE_CASTER(cv::Mat1f, _("numpy.ndarray"));
     
+    static handle cast(const cv::Mat1f &m, return_value_policy, handle defval) {
+        return handle(NDArrayConverter::toNDArray(m));
+    }
+};
+
 }} // namespace pybind11::detail
 
 # endif

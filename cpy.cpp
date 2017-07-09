@@ -1,7 +1,7 @@
 /*
 <%
 setup_pybind11(cfg)
-cfg['sources'] = 'cpy.cpp ndarray_converter.cpp'.split()
+cfg['sources'] = 'ndarray_converter.cpp'.split()
 cfg['compiler_args'] = '-std=c++14 -flto -O3 -fomit-frame-pointer -ffast-math -Wall -fPIC -D__USE_FILE_OFFSET64 -D__USE_LARGEFILE'.split()
 #cfg['parallel'] = True
 cfg['linker_args'] = '-O3 -Wall'.split()
@@ -20,7 +20,7 @@ cfg['libraries'] = 'opencv_core opencv_imgproc opencv_imgcodecs opencv_video ope
 namespace py = pybind11;
 using namespace std;
 auto testmat(int x) {
-    return cv::Mat3b(x,x);
+    return cv::Mat1f(x,x,.0f);
 }
 
 vector<vector<string> > testvstr(int x) {
